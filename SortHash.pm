@@ -3,7 +3,7 @@ package Tie::SortHash;
 use strict;
 use vars qw($VERSION);
 
-$VERSION = '0.01';
+$VERSION = '1.01';
 
 sub iterate {
   my( $hash, $sort, $lastkey ) = @_;
@@ -19,6 +19,9 @@ sub iterate {
 
   # If our sort block is screwed up, report
   die $@ if $@;
+
+  # We ran out of keys.
+  return undef;
 } ## iterate()
 
 sub sortblock {
