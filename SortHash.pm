@@ -113,7 +113,7 @@ __END__
 
 =head1 NAME
 
-Tie::SortHash - Perl module to keep hashes in a sorted order
+Tie::SortHash - Keep hashes in a sorted order
 
 =head1 SYNOPSIS
 
@@ -147,7 +147,7 @@ Tie::SortHash - Perl module to keep hashes in a sorted order
 
 =head1 DESCRIPTION
 
-This module is a designed to be a light weight hash sorting mechanism.
+This module is a designed to be a lightweight hash sorting mechanism.
 It is often frustrating to have a hash return elements in a random order,
 such as when using the C<keys()>, C<values()> and C<each()> functions, 
 or simply when iterating over them.
@@ -223,8 +223,8 @@ It is important to remember a few things about the sort block.
 =item Always pass the sort block in a non-interpolated scalar
 
 This allows you to have greater control over the sorting that you would
-like to do.  With out it, you couldn't sort by value because your program
-would complain that C< %hash> hasn't been declared.  And C<$a> and <$b> would
+like to do.  Without it, you couldn't sort by value because your program
+would complain that C< %hash> hasn't been declared.  And C<$a> and C<$b> would
 need to be represented more like C<$Tie::SortHash::a>.
 
 =item C< %hash> is generic within your sort block.
