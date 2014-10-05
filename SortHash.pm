@@ -76,10 +76,6 @@ sub DELETE {
   return delete $self->{DATA}->{$key};
 } # DELETE()
 
-sub DESTROY {
-  # Nothing useful to do here, just commenting about that
-} # DESTROY()
-
 sub EXISTS {
   my( $self, $key ) = @_;
   return exists $self->{DATA}->{$key};
@@ -182,7 +178,7 @@ don't want that.
 =head2 Standard Tied Hash Methods
 
 C<Tie::SortHash> implements all the methods that a C<tie>d hash class should.
-These are: C<TIEHASH>, C<CLEAR>, C<DELETE>, C<DESTROY>, C<EXISTS>, C<FETCH>,
+These are: C<TIEHASH>, C<CLEAR>, C<DELETE>, C<EXISTS>, C<FETCH>,
 C<FIRSTKEY>, C<NEXTKEY> and C<STORE>.  With the exception of a few, these all
 work as they would on a normal hash.  Those exceptions include:
 
