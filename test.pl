@@ -54,12 +54,13 @@ report( $values[0] == 1, 7 );
 
 report( $values[3] == 4, 8 );
 
-report( delete $hash{java}, 9 );
+report( delete $hash{java} == 3, 9 );
 
-report( $hash{asp} = 5, 10 );
+$hash{asp} = 5;
+report( $hash{asp} == 5, 10 );
 
 @values = values %hash;
 
-report( $values[3] = 5, 11 );
+report( $values[3] == 5, 11 );
 
 report( ! undef %hash, 12 );

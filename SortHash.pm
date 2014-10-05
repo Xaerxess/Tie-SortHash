@@ -21,7 +21,7 @@ sub iterate {
   die $@ if $@;
 
   # We ran out of keys.
-  return undef;
+  return;
 } ## iterate()
 
 sub sortblock {
@@ -51,22 +51,11 @@ sub TIEHASH {
   # that's what this module's for, right?
   my $sort  = shift || '$a cmp $b || $a <=> $b';
 
-  my( $keys, $vals, $i ) = ( {}, [], 1 );
-
-  # Iterate over the hash, setting up info for the pheudo-hash
-  foreach my $key ( keys %{$hash} ) {
-    $keys->{$key} = $i;
-    push @{$vals}, $hash->{$key};
-    $i++;
-  }
-
   # Declare the data
   my $self = {
-              DATA => [ 
-                       $keys,
-                       @{$vals},
-                      ],
-             };
+      # copy the hash
+      DATA => { %{$hash} }
+  };
 
   # Add our sort block to the data
   sortblock( $self, $sort );
@@ -76,28 +65,15 @@ sub TIEHASH {
 
 sub CLEAR {
   my $self      = shift;
-  return $self->{DATA} = [{}];
+  $self->{DATA} = {};
+  return;
 } # CLEAR()
 
 sub DELETE { 
   my( $self, $key ) = @_;
 
-  # Perl's garbage collection for Phseudo-Hashes stinks,
-  # I'm manually taking care of it, forcing me to _not_ be lazy
-
-  # Find the index of the key to delete.
-  my $index = $self->{DATA}->[0]->{$key};
-
-  # Decrement all indexes higher than the one we'll delete
-  foreach ( keys %{$self->{DATA}} ) {
-    $self->{DATA}->[0]->{$_}-- if $self->{DATA}->[0]->{$_} > $index;
-  }
-
-  # Remove the value from the array
-  splice @{$self->{DATA}}, $index, 1;
-
   # Delete the key pointing to the just removed value
-  return delete $self->{DATA}->[0]->{$key};
+  return delete $self->{DATA}->{$key};
 } # DELETE()
 
 sub DESTROY {
@@ -111,32 +87,28 @@ sub EXISTS {
 
 sub FETCH {
   my( $self, $key ) = @_;
-  return $self->{DATA}->{$key};
+  return exists $self->{DATA}->{$key} ? $self->{DATA}->{$key} : undef;
 } # FETCH()
 
 sub FIRSTKEY {
   my $self = shift;
+  # reset hash iterator
   keys %{$self->{DATA}};
   return iterate( $self->{DATA}, $self->{SORT}, undef );
 } # FIRSTKEY()
 
 sub NEXTKEY {
   my( $self, $lastkey ) = @_;
-
-  # Return undef if there's nothing left in our hash
-  return iterate( $self->{DATA}, $self->{SORT}, $lastkey ) || undef;
+  return iterate( $self->{DATA}, $self->{SORT}, $lastkey );
 } # NEXTKEY()
 
 sub STORE {
   my( $self, $key, $value )  = @_;
 
-  # Add the key entry
-  $self->{DATA}->[0]->{$key} = @{$self->{DATA}};
-
   # Add the value
-  $self->{DATA}->{$key}      = $value;
+  $self->{DATA}->{$key} = $value;
 
-  return 1;
+  return $value;
 } # STORE()
 
 1;
