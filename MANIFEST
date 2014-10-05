@@ -3,4 +3,4 @@ lib/Tie/SortHash.pm
 MANIFEST
 Makefile.PL
 README
-test.pl
+t/01_basic.t
