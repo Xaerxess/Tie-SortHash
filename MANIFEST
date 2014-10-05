@@ -1,6 +1,6 @@
 Changes
+lib/Tie/SortHash.pm
 MANIFEST
 Makefile.PL
 README
-SortHash.pm
 test.pl
