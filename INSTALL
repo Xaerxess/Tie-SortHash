@@ -1,0 +1,13 @@
+If, by chance, you don't know what this 'tar.gz' thing is... follow these
+steps first:
+
+  gunzip Tie-SortHash-X.XX.tar.gz
+  tar -xvf Tie-SortHash-X.XX.tar
+  cd Tie-SortHash-X.XX
+
+Next, yep, you guessed it:
+
+  perl Makefile.PL
+  make
+  make test
+  make install

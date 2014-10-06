@@ -1,0 +1,10 @@
+*~
+/Tie-SortHash-*
+/.build
+/_build*
+/blib
+/Build
+MYMETA.*
+!META.json
+/.prove
+

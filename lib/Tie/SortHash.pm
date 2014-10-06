@@ -4,7 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 
-our $VERSION = '1.01';
+our $VERSION = '1.01_01';
 
 sub iterate {
   my( $hash, $sort, $lastkey ) = @_;
@@ -70,7 +70,7 @@ sub CLEAR {
   return;
 } # CLEAR()
 
-sub DELETE { 
+sub DELETE {
   my( $self, $key ) = @_;
 
   # Delete the key pointing to the just removed value
@@ -112,6 +112,8 @@ sub STORE {
 
 __END__
 
+=encoding utf-8
+
 =head1 NAME
 
 Tie::SortHash - Keep hashes in a sorted order
@@ -150,7 +152,7 @@ Tie::SortHash - Keep hashes in a sorted order
 
 This module is a designed to be a lightweight hash sorting mechanism.
 It is often frustrating to have a hash return elements in a random order,
-such as when using the C<keys()>, C<values()> and C<each()> functions, 
+such as when using the C<keys()>, C<values()> and C<each()> functions,
 or simply when iterating over them.
 
 =head1 METHODS
@@ -215,7 +217,7 @@ or:
                           $hash{$a} <=> $hash{$b}
                                     ||
                                  $b cmp $a
-                      )  );  
+                      )  );
 
 It is important to remember a few things about the sort block.
 
@@ -240,27 +242,30 @@ representation of your hash.
 =item What happens when you have a syntax error in your L<"sortblock">?
 
 The program C<die>s, just like it would with any other syntax error.  You
-will recieve a nice message ( C<$@> ) when this occurs.  It 
+will recieve a nice message ( C<$@> ) when this occurs.  It
 will die when you try to assign to the L<"sortblock">.
 
 =back
 
 =head1 AUTHOR
 
-Casey Tweten, crt@kiski.net
+Casey Tweten E<lt>casey@geeknest.comE<gt>
+Grzegorz Rożniecki E<lt>xaerxess@gmail.comE<gt>
 
 =head1 COPYRIGHT
 
 Copyright (c) 2000 Casey Tweten. All rights reserved.
-This program is free software; you can redistribute it 
-and/or modify it under the same terms as Perl itself. 
-
-=head1 VERSION
-
-Version 1.00 Aug 19, 2000
+This program is free software; you can redistribute it
+and/or modify it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<perl>(1), L<perltie>, L<perlfaq4>.
+=over 4
+
+=item L<perltie>
+
+=item L<Tie::Hash::Sorted>
+
+=back
 
 =cut

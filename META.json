@@ -1,0 +1,72 @@
+{
+   "abstract" : "Keep hashes in a sorted order",
+   "author" : [
+      "Casey Tweten <casey@geeknest.com>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Milla version v1.0.5, Dist::Zilla version 5.019, CPAN::Meta::Converter version 2.141170",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Tie-SortHash",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "xt",
+         "inc",
+         "share",
+         "eg",
+         "examples"
+      ]
+   },
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "0"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.30"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "Test::Pod" : "1.41"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "perl" : "5.006000",
+            "strict" : "0",
+            "warnings" : "0"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::More" : "0.88"
+         }
+      }
+   },
+   "release_status" : "testing",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/Xaerxess/Tie-SortHash/issues"
+      },
+      "homepage" : "https://github.com/Xaerxess/Tie-SortHash",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/Xaerxess/Tie-SortHash.git",
+         "web" : "https://github.com/Xaerxess/Tie-SortHash"
+      }
+   },
+   "version" : "1.01_01",
+   "x_contributors" : [
+      "Casey West <casey@geeknest.com>"
+   ]
+}
+
