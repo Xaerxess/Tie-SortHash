@@ -1,9 +1,10 @@
 package Tie::SortHash;
 
+use 5.006;
 use strict;
-use vars qw($VERSION);
+use warnings;
 
-$VERSION = '1.01';
+our $VERSION = '1.01';
 
 sub iterate {
   my( $hash, $sort, $lastkey ) = @_;
